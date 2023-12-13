@@ -1,0 +1,25 @@
+@import '/src/sass/variables';
+
+@media screen and (max-width: 800px) {
+  .popup {
+    width: 90vw !important;
+    height: 70vh !important;
+  }
+}
+
+.popup {
+  display: none;
+  flex-direction: column;
+  width: 734px;
+  height: 737px;
+  position: fixed;
+  bottom: 130px;
+  right: 34px;
+  background-color: #FFFFFF;
+  border: 1px solid #BDBDBD;
+  border-radius: 5px;
+
+  &.show {
+    display: flex;
+  }
+}

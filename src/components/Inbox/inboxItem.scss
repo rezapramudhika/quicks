@@ -1,0 +1,115 @@
+@import '/src/sass/variables';
+
+.inboxItem {
+    padding: 23px 0;
+    border-top: 1px solid #828282;
+    display: flex;
+
+    &:first-child {
+        border-top: 0;
+    }
+
+    .avatar {
+        display: flex;
+        min-width: 68px;
+        justify-content: center;
+
+        .avatarShadow {
+            position: relative;
+            right: -8px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: $primaryLtGrey;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 18px;
+            background-image: url('../../assets/icon/person_24px.png');
+        }
+
+        .avatarMain {
+            position: relative;
+            left: -8px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: $primaryBlue;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 18px;
+            background-image: url('../../assets/icon/person_24px.png');
+        }
+
+        .avatarSingle {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: $primaryBlue;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 18px;
+            background-image: url('../../assets/icon/person_24px.png');
+        }
+    }
+
+    .detail {
+        margin-left: 6px;
+        flex-grow: 1;
+        
+        .firstRow {
+            display: flex;
+            gap: 16px;
+
+            .title {
+                margin: 0;
+                font-weight: $fontWeightBold;
+                font-size: $fontSizeLarge;
+                color: $primaryBlue;
+            }
+
+            .timestamp {
+                min-width: max-content;
+                margin: 0;
+                font-weight: $fontWeightNormal;
+                font-size: $fontSizeNormal;
+                color: $primaryDarkGrey;
+            }
+        }
+
+        .secondRow {
+            margin-top: 8px;
+
+            .senderName {
+                margin: 0;
+                font-weight: $fontWeightBold;
+                font-size: $fontSizeNormal;
+                color: $primaryDarkGrey;
+            }
+
+            .message {
+                margin: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 450px;
+                font-weight: $fontWeightNormal;
+                font-size: $fontSizeNormal;
+                color: $primaryDarkGrey;
+            }
+        }
+    }
+
+    .indicatorContainer {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: end;
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: $indicatorRed;
+        }
+    }
+}

@@ -1,0 +1,155 @@
+@import '/src//sass/variables';
+
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+}
+
+.chatHeader {
+    display: flex;
+    padding: 20px;
+    gap: 12px;
+    align-items: center;
+    border-bottom: 1px solid $primaryLtGrey;
+
+    .chatTitleContainer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        p {
+            margin: 0;
+        }
+
+        .title {
+            font-weight: $fontWeightBold;
+            font-size: $fontSizeLarge;
+            color: $primaryBlue;
+        }
+
+        .participantNumber {
+            font-size: $fontSizeSmall;
+            color: $primaryDarkGrey;
+            font-weight: $fontWeightNormal;
+            margin-top: 6px;
+        }
+    }
+
+    .backBtn {
+        width: 24px;
+        height: 24px;
+        border: 0;
+        background-color: transparent;
+        background-image: url('../../../assets/icon/arrow_back_24px.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+    }
+
+    .closeBtn {
+        width: 24px;
+        height: 24px;
+        border: 0;
+        background-color: transparent;
+        background-image: url('../../../assets/icon/close_24px.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 14px;
+    }
+}
+
+.chatBody {
+    padding: 20px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: auto;
+    flex: 2;
+}
+
+.divider {
+    .timeline {
+        color: $primaryDarkGrey;
+        font-size: 16px;
+        font-weight: 700;
+        overflow: hidden;
+        text-align: center;
+
+        &::before,
+        &::after {
+            background-color: $primaryDarkGrey;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        &::before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        &::after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+    }
+
+    .newMessage {
+        color: $indicatorRed;
+        font-size: 16px;
+        font-weight: 700;
+        overflow: hidden;
+        text-align: center;
+
+        &::before,
+        &::after {
+            background-color: $indicatorRed;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        &::before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        &::after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+    }
+}
+
+
+.chatFooter {
+    padding: 20px;
+    padding-top: 0;
+    display: flex;
+    gap: 12px;
+
+    .chatInput {
+        flex-grow: 1;
+        padding: 12px;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+}
+
+.sendBtn {
+    background-color: $primaryBlue;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 5px;
+}
+

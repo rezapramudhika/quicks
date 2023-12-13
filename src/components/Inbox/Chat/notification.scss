@@ -1,0 +1,55 @@
+@import '/src/sass/variables';
+
+.notificationContainer {
+    position: sticky;
+    width: 100%;
+    bottom: 10px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+
+    .notificationNewMsg {
+        padding: 8px 12px;
+        background-color: $sticker1;
+        border-radius: 5px;
+        color: $primaryBlue;
+        font-size: $fontSizeNormal;
+        font-weight: $fontWeightBold;
+        display: flex;
+        gap: 5px;
+    }
+
+    .iconDownward {
+        width: 16px;
+        height: 16px;
+        background-image: url('../../../assets/icon/arrow_downward_24px.png');
+    }
+
+    .notificationLoadingSupport {
+        padding: 8px 12px;
+        background-color: $sticker1;
+        border-radius: 5px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .notificationSpinner {
+            border: 3px solid #FFFFFF;
+            border-radius: 50%;
+            border-top: 3px solid $primaryBlue;
+            border-right: 3px solid $primaryBlue;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        .notificationText {
+            font-size: $fontSizeNormal;
+            font-weight: $fontWeightBold;
+            color: $primaryDarkGrey;
+        }
+    }
+}

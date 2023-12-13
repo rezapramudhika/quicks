@@ -1,0 +1,110 @@
+@import 'variables';
+
+@keyframes inboxShow1 {
+    0% {
+        right: $positionFloatingBtn1;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        right: $positionFloatingBtn2;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes inboxShow2 {
+    0% {
+        right: $positionFloatingBtn2;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        right: $positionFloatingBtn2;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes inboxHide1 {
+    0% {
+        right: 128px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        right: 37px;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes taskShow1 {
+    0% {
+        right: $positionFloatingBtn1;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        right: $positionFloatingBtn3;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes taskHide1 {
+    0% {
+        right: $positionFloatingBtn3;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        right: $positionFloatingBtn1;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes taskHide2 {
+    0% {
+        right: $positionFloatingBtn3;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        right: $positionFloatingBtn2;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+@keyframes taskHide3 {
+    0% {
+        right: $positionFloatingBtn2;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        right: $positionFloatingBtn1;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }

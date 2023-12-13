@@ -1,0 +1,118 @@
+@import '/src/sass/variables';
+
+.chat {
+    display: flex;
+    flex-direction: column;
+
+    &.myChat {
+        align-items: end;
+    }
+
+    &.otherChat {
+        align-items: start;
+
+        .dialogContainer {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &.systemChat {
+        .dialog {
+            background-color: transparent !important;
+        }
+        .name {
+            color: $primaryBlue !important;
+        }
+    }
+
+    .name {
+        margin-bottom: 5px;
+        margin-top: 0;
+        color: $chatPurple;
+        font-size: $fontSizeNormal;
+        font-weight: $fontWeightBold;
+    }
+
+    .dialogContainer {
+        display: flex;
+
+        .dialog {
+            max-width: 400px;
+            background-color: $chatLtPurple;
+            padding: 10px;
+            border-radius: 5px;
+
+            .message {
+                margin-top: 0;
+                margin-bottom: 5px;
+                color: $primaryDarkGrey;
+                font-size: $fontSizeNormal;
+                font-weight: $fontWeightNormal;
+            }
+
+            .time {
+                margin: 0;
+                color: $primaryDarkGrey;
+                font-size: $fontSizeSmall;
+                font-weight: $fontWeightNormal;
+            }
+        }
+    }
+}
+
+.option {
+    position: relative;
+}
+
+.optionBtn {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    background-image: url('../../../assets/icon/more_horiz_24px_outlined.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.optionMenu {
+    border: 1px solid $primaryLtGrey;
+    border-radius: 5px;
+    position: absolute;
+    background-color: #FFFFFF;
+    display: none;
+
+    div {
+        width: 100px;
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+    .optionEdit {
+        color: $primaryBlue;
+        font-size: $fontSizeNormal;
+        font-weight: $fontWeightNormal;
+        border-bottom: 1px solid $primaryLtGrey;
+    }
+
+    .optionDelete {
+        color: $indicatorRed;
+        font-size: $fontSizeNormal;
+        font-weight: $fontWeightNormal;
+    }
+
+    &.right {
+        right: 0;
+    }
+
+    &.left {
+        left: 0;
+    }
+
+    &.show {
+        display: block;
+    }
+
+}

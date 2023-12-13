@@ -1,0 +1,79 @@
+@import '/src/sass/variables';
+
+.taskContainer {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+}
+
+.taskHeader {
+    display: flex;
+    padding: 20px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+}
+
+.taskCategory {
+    width: 250px;
+
+    .select {
+        width: 100px;
+        padding: 8px 12px;
+        border: 1px solid $primaryGrey;
+        border-radius: 5px;
+        margin: 0 auto;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .icon {
+            width: 8px;
+            height: 8px;
+            background-image: url('../../assets/icon/expand_more_24px.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            background-color: transparent;
+            border: 0;
+            transform: rotate(180deg);
+        }
+    }
+
+    .selectOption {
+        position: absolute;
+        z-index: 2;
+        width: 250px;
+        border: 1px solid $primaryGrey;
+        border-radius: 5px;
+        margin-top: 7px;
+        background-color: #FFFFFF;
+        display: none;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        cursor: pointer;
+
+        .optionItem {
+            padding: 8px 12px;
+
+            &:first-child {
+                border-bottom: 1px solid $primaryGrey;
+            }
+        }
+
+        &.show {
+            display: block;
+            opacity: 1;
+        }
+    }
+}
+
+.taskBody {
+    padding: 0px 30px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    overflow-y: auto;
+}
+  

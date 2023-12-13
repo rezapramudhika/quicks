@@ -1,0 +1,193 @@
+@import '/src/sass/variables';
+
+.taskItem {
+    display: flex;
+    border-bottom: 1px solid $primaryGrey;
+    padding: 20px 0;
+
+    .itemCheckbox {
+        .checkbox {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    .itemBody {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+        flex: 2;
+
+        .titleContainer {
+            display: flex;
+            gap: 10px;
+
+            .inputTitle {
+                padding: 12px;
+                font-size: $fontSizeNormal;
+                border: 1px solid $primaryGrey;
+                border-radius: 5px;
+                flex: 2;
+            }
+
+            .title {
+                margin-right: 20px;
+                color: $primaryDarkGrey;
+                font-size: $fontSizeNormal;
+                font-weight: $fontWeightBold;
+
+                &.strikethrough {
+                    text-decoration: line-through;
+                }
+            }
+
+            .dueDate {
+                flex-shrink: 0;
+                color: $indicatorRed;
+                font-size: $fontSizeNormal;
+                font-weight: $fontWeightNormal;
+
+                &.hide {
+                    visibility: hidden;
+                }
+            }
+
+            .timestamp {
+                flex-shrink: 0;
+                color: $primaryDarkGrey;
+                font-size: $fontSizeNormal;
+                font-weight: $fontWeightNormal;
+            }
+
+            .dropdown {
+                width: 14px;
+                height: 14px;
+                margin-top: 3px;
+                background-image: url('../../assets/icon/expand_more_24px.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                background-color: transparent;
+                border: 0;
+                transform: rotate(180deg);
+                cursor: pointer;
+
+                &.open {
+                    transform: rotate(0deg);
+                }
+            }
+        }
+
+        .detailContainer {
+            display: none;
+            flex-direction: column;
+            padding: 10px 0;
+            gap: 12px;
+
+            &.show {
+                display: flex;
+            }
+
+            .time {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                    background-image: url('../../assets/icon/schedule_24px_outlined.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    border: 0;
+                }
+
+                .inputTime {
+                    padding: 12px;
+                    border: 1px solid $primaryGrey;
+                    border-radius: 5px;
+                }
+            }
+
+            .desc {
+                display: flex;
+                gap: 10px;
+                align-items: flex-start;
+
+                .icon {
+                    width: 20px;
+                    height: 16px;
+                    background-image: url('../../assets/icon/Group\ 1714.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    border: 0;
+                    flex-shrink: 0;
+                }
+
+                .descText {
+                    font-size: $fontSizeNormal;
+                    font-weight: $fontWeightNormal;
+                    color: $primaryDarkGrey;
+                    margin: 0;
+                    cursor: pointer;
+                }
+
+                .inputDesc {
+                    padding: 5px;
+                    border: 1px solid $primaryGrey;
+                    border-radius: 5px;
+                    flex: 2;
+                    height: 80px;
+                    font-family: 'Lato', sans-serif;
+                    font-size: $fontSizeNormal;
+                    font-weight: $fontWeightNormal;
+                    color: $primaryDarkGrey;
+
+                    &:disabled {
+                        background-color: inherit;
+                        color: $primaryDarkGrey;
+                        border: 0;
+                        text-decoration: none;
+                        height: fit-content;
+                        padding: 0;
+                        resize: none;
+                    }
+                }
+
+                .textDesc {
+                    color: $primaryDarkGrey;
+                }
+            }
+
+        }
+    }
+}
+
+.react-datepicker__view-calendar-icon input {
+    padding: 12px !important;
+    font-family: 'Lato', sans-serif !important;
+    font-size: $fontSizeNormal !important;
+    font-weight: $fontWeightNormal !important;
+    color: $primaryDarkGrey !important;
+    border: 1px solid $primaryGrey !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.react-datepicker__input-container .react-datepicker__calendar-icon {
+    position: absolute;
+    box-sizing: content-box;
+    padding: 0 !important;
+    right: 12px !important;
+    top: 14px !important;
+}
+
+.iconGrey {
+    filter: invert(49%) sepia(0%) saturate(330%) hue-rotate(195deg) brightness(104%) contrast(92%);
+}
