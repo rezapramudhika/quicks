@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.scss';
 import Dialog from './Dialog';
 import Notification from './Notification';
@@ -8,7 +8,15 @@ import moment from 'moment';
 
 const Chat = (props) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [firstIsRead, setFirstIsRead] = useState(false);
+    const [unreadMessageId, setUnreadMessageId] = useState();
+
+    useEffect(() => {
+        let msg = props.data.message
+        let obj = msg[msg.length - 1].data.find(o => o.isRead == false);
+        if (obj) {
+            setUnreadMessageId(obj.messageId)
+        }
+    }, []);
 
     return (
         <div className='chatContainer'>
@@ -26,7 +34,6 @@ const Chat = (props) => {
                         <Loader loadingText='Loading conversation ...' />
                         :
                         props.data && props.data.message.map(item => (
-                            // <Dialog data={item} />
                             <Wrapper>
                                 <div className='divider'>
                                     <p className='timeline'>
@@ -38,35 +45,23 @@ const Chat = (props) => {
                                     </p>
                                 </div>
                                 {
-                                    item.data.map( (msg, i) => (
-                                        <Wrapper>
+                                    item.data.map((msg, i) => (
+                                        <Wrapper key={i}>
                                             {
-                                                !msg.isRead &&
-                                                <div className={`divider`} >
+                                                !msg.isRead && msg.messageId === unreadMessageId &&
+                                                <div className={`divider`}>
                                                     <p className='newMessage'>New Message</p>
                                                 </div>
                                             }
-                                            <Dialog data={msg} inboxId={props.data.id} />
+                                            <Dialog key={props.data.id} data={msg} inboxId={props.data.id} />
                                         </Wrapper>
                                     ))
                                 }
                             </Wrapper>
                         ))
-
-                    // <Wrapper>
-                    //     <Dialog type={1} />
-                    //     <Dialog type={2} />
-                    //     <div className='divider'>
-                    //         <p className='timeline'>Today June 09, 2021</p>
-                    //     </div>
-                    //     <Dialog type={1} />
-                    //     <Dialog type={2} />
-                    //     <div className='divider'>
-                    //         <p className='newMessage'>New Message</p>
-                    //     </div>
-                    //     <Dialog type={3} />
-                    //     <Notification type={'loadingSupport'} />
-                    // </Wrapper>
+                }
+                {
+                    unreadMessageId && <Notification type={'newMsg'} />
                 }
                 {
                     props.data.isSupport && <Notification type={'loadingSupport'} />

@@ -28,7 +28,7 @@ const Inbox = (props) => {
                         <Loader loadingText={'Loading Chats ...'} /> :
                         <Wrapper>
                             {
-                                data.length && data.map(item => <InboxItem data={item} isSupport={item.isSupport} chatDetailHandler={props.chatDetailHandler} selectInboxItem={props.selectInboxItem}/>)
+                                data.length && data.map(item => <InboxItem key={item.id} data={item} isSupport={item.isSupport} chatDetailHandler={props.chatDetailHandler} selectInboxItem={props.selectInboxItem}/>)
                             }
                         </Wrapper>
                 }

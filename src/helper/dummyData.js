@@ -144,3 +144,42 @@ export const inboxData = [
         ]
     }
 ];
+
+export const taskData = [
+    {
+        id: 1,
+        title: 'Close off Case #012920- RODRIGUES, Amiguel',
+        dueDate: moment(now).add(5, 'days'),
+        description: 'Closing off this case since this application has been cancelled. No one really understand how this case could possibly be cancelled. The options and the documents within this document were totally a guaranteed for a success!',
+        completed: false,
+        createdAt: moment(now).subtract(5, 'days')
+    },{
+        id: 2,
+        title: 'Set up documentation report for several Cases : Case 145443, Case 192829 and Case 182203',
+        dueDate: moment(now).add(4, 'days'),
+        description: 'All Cases must include all payment transactions, all documents and forms filled. All conversations in comments and messages in channels and emails should be provided as well in.',
+        completed: false,
+        createdAt: moment(now).subtract(5, 'days')
+    },{
+        id: 3,
+        title: 'Set up appointment with Dr Blake',
+        dueDate: moment(now).add(3, 'days'),
+        description: null,
+        completed: false,
+        createdAt: moment(now).subtract(7, 'days')
+    },{
+        id: 4,
+        title: 'Contact Mr Caleb - video conference?',
+        dueDate: moment(now).add(1, 'days'),
+        description: null,
+        completed: true,
+        createdAt: moment(now).subtract(8, 'days')
+    },{
+        id: 5,
+        title: 'Assign 3 homework to Client A',
+        dueDate: moment(now).add(2, 'days'),
+        description: null,
+        completed: true,
+        createdAt: moment(now).subtract(8, 'days')
+    }
+]

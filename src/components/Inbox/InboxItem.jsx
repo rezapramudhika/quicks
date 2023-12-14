@@ -21,7 +21,13 @@ const InboxItem = (props) => {
                         <p className='timestamp'>{props.data.date}</p>
                     </div>
                     <div className='secondRow'>
-                        <p className='message'>{props.data.message[props.data.message.length - 1].message}</p>
+                        <p className='senderName'>
+                            {
+                                props.data.message[props.data.message.length - 1].data[props.data.message[props.data.message.length - 1].data.length - 1].userId === 2 ?
+                                'You' :
+                                props.data.message[props.data.message.length - 1].data[props.data.message[props.data.message.length - 1].data.length - 1].userName
+                            } :</p>
+                        <p className='message'>{props.data.message[props.data.message.length - 1].data[props.data.message[props.data.message.length - 1].data.length - 1].message}</p>
                     </div>
                 </div>
                 <div className='indicatorContainer'>

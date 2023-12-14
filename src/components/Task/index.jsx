@@ -2,42 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './index.scss';
 import TaskItem from './TaskItem';
 import Loader from '../Loader';
-
-const taskData = [
-    {
-        id: 1,
-        title: 'Close off Case #012920- RODRIGUES, Amiguel',
-        dueDate: new Date(),
-        description: 'Closing off this case since this application has been cancelled. No one really understand how this case could possibly be cancelled. The options and the documents within this document were totally a guaranteed for a success!',
-        completed: false
-    },{
-        id: 2,
-        title: 'Set up documentation report for several Cases : Case 145443, Case 192829 and Case 182203',
-        dueDate: new Date(),
-        description: 'All Cases must include all payment transactions, all documents and forms filled. All conversations in comments and messages in channels and emails should be provided as well in.',
-        completed: false
-    },{
-        id: 3,
-        title: 'Set up appointment with Dr Blake',
-        dueDate: new Date(),
-        description: null,
-        completed: false
-    },{
-        id: 4,
-        title: 'Contact Mr Caleb - video conference?',
-        dueDate: new Date(),
-        description: null,
-        completed: true
-    },{
-        id: 5,
-        title: 'Assign 3 homework to Client A',
-        dueDate: new Date(),
-        description: null,
-        completed: true
-    }
-    
-]
-
+import { taskData } from '../../helper/dummyData';
 
 const Task = (props) => {
     const [selectOpen, setSelectOpen] = useState(false);
@@ -79,8 +44,8 @@ const Task = (props) => {
             <div className='taskBody' id='taskBody'>
                 {
                     isLoading ?
-                    <Loader loadingText={'Loading Task List ...'}/> :
-                    data.length !== 0 && data.map(item => <TaskItem data={item}/>)
+                        <Loader loadingText={'Loading Task List ...'} /> :
+                        data.length !== 0 && data.map(item => <TaskItem key={item.id} data={item} />)
                 }
                 {
                     newTask && <TaskItem newTask />
