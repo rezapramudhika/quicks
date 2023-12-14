@@ -16,22 +16,26 @@ export const setChatColor = (origin) => {
         );
         origin[i].data = unique
     }
-
     let manipulated = []
     for (let i = 0; i < origin.message.length; i++) {
-        manipulated.push(...origin.message[i].data)
+        for (let j = 0; j < origin.message[i].data.length; j++) {
+            if (origin.message[i].data[j].userId !== 2) {
+                manipulated.push(origin.message[i].data[j])
+            }
+        }
     }
-
     const noDuplicateIds = manipulated.filter(
         (obj, index) =>
             manipulated.findIndex((item) => item.userId === obj.userId) === index
     );
     let temp = [];
     noDuplicateIds.forEach((item, i) => {
-        temp.push({
-            userId: item.userId,
-            colors: colors[i<2 ? i : 0]
-        })
+        if (item.userId !== 2) {
+            temp.push({
+                userId: item.userId,
+                colors: colors[i < 2 ? i : 0]
+            })
+        }
     });
     localStorage.setItem(`inbox-${origin.id}`, JSON.stringify(temp))
 }

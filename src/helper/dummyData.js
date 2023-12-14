@@ -14,6 +14,14 @@ export const inboxData = [
             {
                 date: moment(now).subtract(1, 'day'),
                 data: [{
+                    messageId: 1,
+                    userId: 3,
+                    userName: 'Mary Hilda',
+                    message: 'Just Fill me in for his updates yea?',
+                    createdAt: moment(now).subtract(1, 'day').subtract(14, 'minutes').format('MMMM DD, YYYY hh:mm'),
+                    isRead: true
+
+                },{
                     messageId: 2,
                     userId: 2,
                     userName: 'Claren',
@@ -149,7 +157,7 @@ export const taskData = [
     {
         id: 1,
         title: 'Close off Case #012920- RODRIGUES, Amiguel',
-        dueDate: moment(now).add(5, 'days'),
+        dueDate: moment(now).add(3, 'days'),
         description: 'Closing off this case since this application has been cancelled. No one really understand how this case could possibly be cancelled. The options and the documents within this document were totally a guaranteed for a success!',
         completed: false,
         createdAt: moment(now).subtract(5, 'days')
@@ -163,7 +171,7 @@ export const taskData = [
     },{
         id: 3,
         title: 'Set up appointment with Dr Blake',
-        dueDate: moment(now).add(3, 'days'),
+        dueDate: moment(now).add(6, 'days'),
         description: null,
         completed: false,
         createdAt: moment(now).subtract(7, 'days')

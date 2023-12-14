@@ -9,6 +9,7 @@
         .checkbox {
             width: 18px;
             height: 18px;
+            margin: 0;
         }
     }
 
@@ -21,7 +22,6 @@
         .titleContainer {
             display: flex;
             gap: 10px;
-            padding: 5px 0;
 
             .inputTitle {
                 padding: 12px;
@@ -62,9 +62,9 @@
             }
 
             .dropdown {
-                width: 14px;
-                height: 14px;
-                margin-top: 3px;
+                width: 10px;
+                height: 10px;
+                margin-top: 5px;
                 background-image: url('../../assets/icon/expand_more_24px.png');
                 background-repeat: no-repeat;
                 background-size: contain;

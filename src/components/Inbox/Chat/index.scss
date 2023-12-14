@@ -147,7 +147,8 @@
 .sendBtn {
     background-color: $primaryBlue;
     color: #FFFFFF;
-    font-weight: bold;
+    font-weight: $fontWeightBold;
+    font-size: $fontSizeNormal;
     padding: 8px 16px;
     border: 0;
     border-radius: 5px;

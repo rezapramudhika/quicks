@@ -24,7 +24,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: 18px;
-            background-image: url('../../assets/icon/person_24px.png');
+            background-image: url('../../assets/icon/person_24px_dark.png');
         }
 
         .avatarMain {
@@ -49,13 +49,18 @@
             background-repeat: no-repeat;
             background-size: 18px;
             background-image: url('../../assets/icon/person_24px.png');
+
+            &.support {
+                background-image: url('../../assets/icon/Group\ 1983.png');
+                background-size: contain;
+            }
         }
     }
 
     .detail {
         margin-left: 6px;
         flex-grow: 1;
-        
+
         .firstRow {
             display: flex;
             gap: 16px;

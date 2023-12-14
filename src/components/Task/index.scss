@@ -17,7 +17,7 @@
     width: 250px;
 
     .select {
-        width: 100px;
+        width: fit-content;
         padding: 8px 12px;
         border: 1px solid $primaryGrey;
         border-radius: 5px;
@@ -26,6 +26,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 7px;
+
+        label {
+            font-size: $fontSizeNormal;
+            font-weight: $fontWeightBold;
+            color: $primaryDarkGrey;
+        }
 
         .icon {
             width: 8px;
@@ -55,6 +62,9 @@
 
         .optionItem {
             padding: 8px 12px;
+            font-size: $fontSizeNormal;
+            font-weight: $fontWeightBold;
+            color: $primaryDarkGrey;
 
             &:first-child {
                 border-bottom: 1px solid $primaryGrey;

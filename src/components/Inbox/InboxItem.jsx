@@ -13,7 +13,7 @@ const InboxItem = (props) => {
         props.isSupport ?
             <div className='inboxItem' onClick={inboxItemClickHandler}>
                 <div className='avatar'>
-                    <div className='avatarSingle'></div>
+                    <div className='avatarSingle support'></div>
                 </div>
                 <div className='detail'>
                     <div className='firstRow'>
