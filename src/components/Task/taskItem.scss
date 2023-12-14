@@ -35,6 +35,7 @@
                 color: $primaryDarkGrey;
                 font-size: $fontSizeNormal;
                 font-weight: $fontWeightBold;
+                flex-grow: 1;
 
                 &.strikethrough {
                     text-decoration: line-through;

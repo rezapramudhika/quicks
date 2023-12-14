@@ -1,56 +1,79 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dialog.scss';
+import moment from 'moment';
+import Wrapper from '../../../helper/Wrapper';
 
 const Dialog = (props) => {
-    const [optionShow, setOptionShow] = useState(false);
 
+    const [color, setColor] = useState('')
+    const [optionShow, setOptionShow] = useState(false);
     const optionShowHandler = () => {
         setOptionShow(!optionShow);
     }
+    useEffect(() => {
+        let localStorageData = JSON.parse(localStorage.getItem(`inbox-${props.inboxId}`))
+        localStorageData.forEach(element => {
+            if (element.userId === props.data.userId) {
+                setColor(element.colors)
+            }
+        });
+    }, []);
 
     return (
-        props.type === 1 ?
-            <div className='chat myChat'>
-                <p className='name'>You</p>
-                <div className='dialogContainer'>
-                    <div className='option'>
-                        <button className='optionBtn' onClick={optionShowHandler}></button>
-                        <div className={`optionMenu left ${optionShow && 'show'}`}>
-                            <div className='optionEdit'>Edit</div>
-                            <div className='optionDelete'>Delete</div>
-                        </div>
-                    </div>
-                    <div className='dialog'>
-                        <p className='message'>No worries! It will be completed ASAP. I've asked him yesterday.</p>
-                        <p className='time'>19.32</p>
-                    </div>
-                </div>
-            </div> : props.type === 2 ?
-                <div className='chat otherChat'>
-                    <p className='name' style={{ color: '#E5A443' }}>Mary Hilda</p>
-                    <div className='dialogContainer'>
-                        <div className='option'>
-                            <button className='optionBtn' onClick={optionShowHandler}></button>
-                            <div className={`optionMenu right ${optionShow && 'show'}`}>
-                                <div className='optionEdit'>Share</div>
-                                <div className='optionEdit'>Reply</div>
+        <Wrapper>
+            {
+
+                //     <div className='divider'>
+                //         <p className='timeline'>Today June 09, 2021</p>
+                //     </div>
+            }
+            {
+                props.data.userId === 2 ?
+                    <div className='chat myChat'>
+                        <p className='name'>You</p>
+                        <div className='dialogContainer'>
+                            <div className='option'>
+                                <button className='optionBtn' onClick={optionShowHandler}></button>
+                                <div className={`optionMenu left ${optionShow && 'show'}`}>
+                                    <div className='optionEdit'>Edit</div>
+                                    <div className='optionDelete'>Delete</div>
+                                </div>
+                            </div>
+                            <div className='dialog'>
+                                <p className='message'>{props.data.message}</p>
+                                <p className='time'>{moment(props.data.createdAt).format('hh:mm')}</p>
                             </div>
                         </div>
-                        <div className='dialog' style={{ backgroundColor: '#FCEED3' }}>
-                            <p className='message'>Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.</p>
-                            <p className='time'>19.32</p>
+                    </div> : props.data.userId === 1 ?
+                        <div className='chat systemChat'>
+                            <p className='name'>{props.data.userName}</p>
+                            <div className='dialogContainer'>
+                                <div className='dialog'>
+                                    <p className='message'>{props.data.message}</p>
+                                    <p className='time'>{moment(props.data.createdAt).format('hh:mm')}</p>
+                                </div>
+                            </div>
+                        </div> :
+                        <div className='chat otherChat'>
+                            <p className='name' style={{ color: color.color }}>{props.data.userName}</p>
+                            <div className='dialogContainer'>
+                                <div className='option'>
+                                    <button className='optionBtn' onClick={optionShowHandler}></button>
+                                    <div className={`optionMenu right ${optionShow && 'show'}`}>
+                                        <div className='optionEdit'>Share</div>
+                                        <div className='optionEdit'>Reply</div>
+                                    </div>
+                                </div>
+                                <div className='dialog' style={{ backgroundColor: color.backgroundColor }}>
+                                    <p className='message'>{props.data.message}</p>
+                                    <p className='time'>{moment(props.data.createdAt).format('hh:mm')}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div> :
-                <div className='chat systemChat'>
-                    <p className='name'>FastVisa Support</p>
-                    <div className='dialogContainer'>
-                        <div className='dialog'>
-                            <p className='message'>Hey there. Welcome to your inbox! Contact us for more information and help about anything! We'll send you a response as soon as possible.</p>
-                            <p className='time'>19.32</p>
-                        </div>
-                    </div>
-                </div>
+            }
+        </Wrapper>
+
+
     );
 }
 

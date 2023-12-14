@@ -9,6 +9,9 @@ function App() {
     const [chatDetail, setChatDetail] = useState(false);
 
     const selectMenuHandler = (menu) => {
+        if(menu == 'menu') {
+            setChatDetail(false);
+        }
         setSelectedMenu(menu);
         setQuicksBtnOpen(false)
     }
@@ -23,7 +26,7 @@ function App() {
         }
     }
 
-    const chatDetailHandler = () => {
+    const chatDetailHandler = (data) => {
         setChatDetail(!chatDetail);
     }
 
@@ -31,7 +34,9 @@ function App() {
         <div className='App'>
             <div className='sidebar'></div>
             <div className='content'>
-                <div className='searchbar'></div>
+                <div className='searchbar'>
+                    <div className='searchIcon'></div>
+                </div>
                 {
                     selectedMenu !== 'menu' &&
                     <PopUp

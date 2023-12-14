@@ -2,162 +2,172 @@
 @import 'sass/animation';
 
 .App {
-    display: flex;
-    min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
 }
 
 @media screen and (max-width:1080px) {
-    .sidebar {
-        display: none;
-    }
+  .sidebar {
+    display: none;
+  }
 }
 
 .sidebar {
-    background-color: #333333;
-    border-right: 1px solid $primaryLtGrey;
-    min-width: 300px;
+  background-color: #333333;
+  border-right: 1px solid $primaryLtGrey;
+  min-width: 300px;
 }
 
 .content {
-    flex-grow: 1;
-    background-color: #333333;
+  flex-grow: 1;
+  background-color: #333333;
 }
 
 .searchbar {
-    background-color: $primaryDarkGrey;
-    height: 58px;
-    display: flex;
+  background-color: $primaryDarkGrey;
+  display: flex;
+  align-items: center;
+  padding: 20px 26px;
+
+  .searchIcon {
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-image: url('./assets/icon/search_24px_white.svg');
+  }
 }
 
 .quicksBtn {
-    position: fixed;
-    bottom: 27px;
-    right: 34px;
-    padding: 0;
-    border: 0;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background-position: top;
-    z-index: 2;
-    background-color: $primaryBlue;
-    transition: background-image .5s ease-in-out;
-  
-    &.menu {
-      background-image: url('./assets/icon/Group 1658.svg');
-    }
-  
-    &.inbox {
-      background-image: url('./assets/icon/Group 1929.png');
-    }
-  
-    &.task {
-      background-image: url('./assets/icon/Group 1927.png');
-    }
-  }
-  
-  .quicksBtnClose {
-    visibility: hidden;
-    opacity: 0;
-    position: fixed;
-    bottom: 27px;
-    right: 49px;
-    padding: 0;
-    border: 0;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background-position: top;
-    background-color: $primaryDarkGrey;
-    z-index: 1;
-  
-    &.show {
-      visibility: visible;
-      opacity: 1;
-      transition: opacity .5s ease-in-out;
-    }
-  }
-  
-  .inboxBtnContainer {
-    position: fixed;
-    bottom: 27px;
-    right: 128px;
-    text-align: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: .5s linear all;
-  
-    p {
-      margin: 0 0 11.88px 0;
-      color: white;
-    }
-  
-    &.open {
-      animation: inboxShow1 .5s linear forwards;
-    }
-  
-    &.selected,
-    &.close {
-      animation: inboxHide1 .5s linear forwards;
-    }
-  
-    &.notSelected {
-      right: 128px;
-      opacity: 1;
-      visibility: visible;
-    }
+  position: fixed;
+  bottom: 27px;
+  right: 34px;
+  padding: 0;
+  border: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-position: top;
+  z-index: 2;
+  background-color: $primaryBlue;
+  transition: background-image .5s ease-in-out;
+
+  &.menu {
+    background-image: url('./assets/icon/Group 1658.svg');
   }
 
+  &.inbox {
+    background-image: url('./assets/icon/Group 1929.png');
+  }
+
+  &.task {
+    background-image: url('./assets/icon/Group 1927.png');
+  }
+}
+
+.quicksBtnClose {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  bottom: 27px;
+  right: 49px;
+  padding: 0;
+  border: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-position: top;
+  background-color: $primaryDarkGrey;
+  z-index: 1;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+  }
+}
+
+.inboxBtnContainer {
+  position: fixed;
+  bottom: 27px;
+  right: 128px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: .5s linear all;
+
+  p {
+    margin: 0 0 11.88px 0;
+    color: white;
+  }
+
+  &.open {
+    animation: inboxShow1 .5s linear forwards;
+  }
+
+  &.selected,
+  &.close {
+    animation: inboxHide1 .5s linear forwards;
+  }
+
+  &.notSelected {
+    right: 128px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .inboxBtn {
-    padding: 0;
-    border: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-position: top;
-    background-image: url('./assets/icon/Group 1899.png');
+  padding: 0;
+  border: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-position: top;
+  background-image: url('./assets/icon/Group 1899.png');
 }
 
 .taskBtnContainer {
-    position: fixed;
-    bottom: 27px;
-    right: 37px;
-    text-align: center;
-    visibility: hidden;
-    opacity: 0;
+  position: fixed;
+  bottom: 27px;
+  right: 37px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
 
-    p {
-        margin: 0 0 11.88px 0;
-        color: white;
-    }
+  p {
+    margin: 0 0 11.88px 0;
+    color: white;
+  }
 
-    &.open {
-        animation: taskShow1 .5s linear forwards;
-    }
+  &.open {
+    animation: taskShow1 .5s linear forwards;
+  }
 
-    &.selected {
-        animation: taskHide1 .5s linear forwards;
-    }
+  &.selected {
+    animation: taskHide1 .5s linear forwards;
+  }
 
-    &.notSelected {
-        animation: taskHide2 .5s linear forwards;
-    }
+  &.notSelected {
+    animation: taskHide2 .5s linear forwards;
+  }
 
-    &.closeFromNotSelected {
-        animation: taskHide3 .5s linear forwards;
-    }
+  &.closeFromNotSelected {
+    animation: taskHide3 .5s linear forwards;
+  }
 
-    &.closeFromOpen {
-        animation: taskHide1 .5s linear forwards;
-    }
+  &.closeFromOpen {
+    animation: taskHide1 .5s linear forwards;
+  }
 }
 
 .taskBtn {
-    padding: 0;
-    border: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-position: top;
-    background-image: url('./assets/icon/Group 1900.png');
+  padding: 0;
+  border: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-position: top;
+  background-image: url('./assets/icon/Group 1900.png');
 }

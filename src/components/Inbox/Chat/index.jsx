@@ -4,18 +4,19 @@ import Dialog from './Dialog';
 import Notification from './Notification';
 import Loader from '../../Loader'
 import Wrapper from '../../../helper/Wrapper';
+import moment from 'moment';
 
 const Chat = (props) => {
-
     const [isLoading, setIsLoading] = useState(false);
+    const [firstIsRead, setFirstIsRead] = useState(false);
 
     return (
         <div className='chatContainer'>
             <div className='chatHeader'>
                 <button className='backBtn' onClick={props.chatDetailHandler}></button>
                 <div className='chatTitleContainer'>
-                    <p className='title'>I-589 - AMARKHIL, Obaidullah [Affirmative Filing with ZHN]</p>
-                    <p className='participantNumber'>3 Participants</p>
+                    <p className='title'>{props.data.title}</p>
+                    <p className='participantNumber'>{props.data.participantNumber} Participants</p>
                 </div>
                 <button className='closeBtn' onClick={props.chatDetailHandler}></button>
             </div>
@@ -24,25 +25,51 @@ const Chat = (props) => {
                     isLoading ?
                         <Loader loadingText='Loading conversation ...' />
                         :
-                        <Wrapper>
-                            <Dialog type={1} />
-                            <Dialog type={2} />
+                        props.data && props.data.message.map(item => (
+                            // <Dialog data={item} />
+                            <Wrapper>
+                                <div className='divider'>
+                                    <p className='timeline'>
+                                        {
+                                            moment(item.date).diff(moment(), 'days') < 0 ?
+                                                moment(item.date).format('dddd MMMM DD, YYYY') :
+                                                moment(item.date).format('[Today] MMMM DD, YYYY')
+                                        }
+                                    </p>
+                                </div>
+                                {
+                                    item.data.map( (msg, i) => (
+                                        <Wrapper>
+                                            {
+                                                !msg.isRead &&
+                                                <div className={`divider`} >
+                                                    <p className='newMessage'>New Message</p>
+                                                </div>
+                                            }
+                                            <Dialog data={msg} inboxId={props.data.id} />
+                                        </Wrapper>
+                                    ))
+                                }
+                            </Wrapper>
+                        ))
 
-                            <div className='divider'>
-                                <p className='timeline'>Today June 09, 2021</p>
-                            </div>
-
-                            <Dialog type={1} />
-                            <Dialog type={2} />
-
-                            <div className='divider'>
-                                <p className='newMessage'>New Message</p>
-                            </div>
-
-                            <Dialog type={3} />
-
-                            <Notification type={'loadingSupport'} />
-                        </Wrapper>
+                    // <Wrapper>
+                    //     <Dialog type={1} />
+                    //     <Dialog type={2} />
+                    //     <div className='divider'>
+                    //         <p className='timeline'>Today June 09, 2021</p>
+                    //     </div>
+                    //     <Dialog type={1} />
+                    //     <Dialog type={2} />
+                    //     <div className='divider'>
+                    //         <p className='newMessage'>New Message</p>
+                    //     </div>
+                    //     <Dialog type={3} />
+                    //     <Notification type={'loadingSupport'} />
+                    // </Wrapper>
+                }
+                {
+                    props.data.isSupport && <Notification type={'loadingSupport'} />
                 }
             </div>
             <div className='chatFooter'>
