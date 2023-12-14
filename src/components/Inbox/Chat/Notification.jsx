@@ -6,7 +6,7 @@ const Notification = (props) => {
         <div className='notificationContainer'>
             {
                 props.type === 'newMsg' ?
-                    <div className='notificationNewMsg'>
+                    <div className='notificationNewMsg' onClick={props.onClick}>
                         <label>New Message</label>
                         <div className='iconDownward'></div>
                     </div> : props.type === 'loadingSupport' &&

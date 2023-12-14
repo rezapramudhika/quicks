@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './index.scss';
 import Dialog from './Dialog';
 import Notification from './Notification';
@@ -9,6 +9,9 @@ import moment from 'moment';
 const Chat = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [unreadMessageId, setUnreadMessageId] = useState();
+    const [notifIsClicked , setNotifIsClicked] = useState(false)
+
+    const bottomRef = useRef(null);
 
     useEffect(() => {
         let msg = props.data.message
@@ -17,6 +20,11 @@ const Chat = (props) => {
             setUnreadMessageId(obj.messageId)
         }
     }, []);
+
+    const notifClickHandler = () => {
+        bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+        setNotifIsClicked(true)
+    }
 
     return (
         <div className='chatContainer'>
@@ -61,8 +69,9 @@ const Chat = (props) => {
                         ))
                 }
                 {
-                    unreadMessageId && <Notification type={'newMsg'} />
+                    unreadMessageId && !notifIsClicked &&<Notification type={'newMsg'} onClick={notifClickHandler}/>
                 }
+                <div ref={bottomRef} />
                 {
                     props.data.isSupport && <Notification type={'loadingSupport'} />
                 }
