@@ -163,6 +163,40 @@
                 }
             }
 
+            .badgeContainer {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                background-color: #F9F9F9;
+                border-radius: 5px;
+
+                .icon {
+                    width: 20px;
+                    height: 16px;
+                    background-image: url('../../assets/icon/Group\ 1714.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    border: 0;
+                    flex-shrink: 0;
+                }
+
+                .selectedBadge {
+                    padding: 7px 0;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-wrap: 1;
+
+                    .badge {
+                        font-size: $fontSizeNormal;
+                        font-weight: $fontWeightNormal;
+                        color: $primaryDarkGrey;
+                        padding: 8px 12px;
+                        border-radius: 5px;
+                        background-color: #E9F3FF;
+                    }
+                }
+            }
         }
     }
 }

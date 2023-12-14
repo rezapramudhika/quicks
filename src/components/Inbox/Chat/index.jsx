@@ -5,11 +5,20 @@ import Notification from './Notification';
 import Loader from '../../Loader'
 import Wrapper from '../../../helper/Wrapper';
 import moment from 'moment';
-
+const test = {
+    messageId: 2,
+    userId: 2,
+    userName: 'Claren',
+    message: 'Hi, I need help with something can you help me?',
+    createdAt: moment().subtract(5, 'days').format('MMMM DD, YYYY hh:mm'),
+    isRead: true
+};
 const Chat = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [unreadMessageId, setUnreadMessageId] = useState();
-    const [notifIsClicked , setNotifIsClicked] = useState(false)
+    const [notifIsClicked, setNotifIsClicked] = useState(false);
+    const [replyFromMessageData, setReplyFromMessageData] = useState();
+    const [messageInput, setMessageInput] = useState();
 
     const bottomRef = useRef(null);
 
@@ -22,8 +31,41 @@ const Chat = (props) => {
     }, []);
 
     const notifClickHandler = () => {
-        bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
         setNotifIsClicked(true)
+    }
+
+    const replyOptionHandler = (data) => {
+        setReplyFromMessageData(data)
+    }
+
+    const replyCloseHandler = () => {
+        setReplyFromMessageData(undefined);
+    }
+
+    const messageInputHandler = (e) => {
+        e.preventDefault();
+        setMessageInput(e.target.value)
+    }
+
+    const sendBtn = () => {
+        if(replyFromMessageData && messageInput.trim()){
+            let data = {
+                fromUsername: replyFromMessageData.userName,
+                fromMessage: replyFromMessageData.message,
+                messageId: 100,
+                userId: 2,
+                userName: 'Claren',
+                message: messageInput,
+                createdAt: moment().format('MMMM DD, YYYY hh:mm'),
+                isRead: true
+            }
+            let msg = props.data.message
+            msg[msg.length - 1].data.push(data)
+            setReplyFromMessageData();
+            setMessageInput('')
+            bottomRef.current?.scrollIntoView({ behavior: 'smooth', inline: "end" });
+        }
     }
 
     return (
@@ -61,7 +103,7 @@ const Chat = (props) => {
                                                     <p className='newMessage'>New Message</p>
                                                 </div>
                                             }
-                                            <Dialog key={props.data.id} data={msg} inboxId={props.data.id} />
+                                            <Dialog key={props.data.id} data={msg} inboxId={props.data.id} replyOptionHandler={replyOptionHandler} />
                                         </Wrapper>
                                     ))
                                 }
@@ -69,7 +111,7 @@ const Chat = (props) => {
                         ))
                 }
                 {
-                    unreadMessageId && !notifIsClicked &&<Notification type={'newMsg'} onClick={notifClickHandler}/>
+                    unreadMessageId && !notifIsClicked && <Notification type={'newMsg'} onClick={notifClickHandler} />
                 }
                 <div ref={bottomRef} />
                 {
@@ -77,8 +119,15 @@ const Chat = (props) => {
                 }
             </div>
             <div className='chatFooter'>
-                <input className='chatInput' type='text' placeholder='Type a new message'></input>
-                <button className='sendBtn'>Send</button>
+                <div className='chatInputContainer'>
+                    <div className={`reply ${!replyFromMessageData && 'hide'}`}>
+                        <div className='closeReply' onClick={replyCloseHandler}></div>
+                        <p className='title'>Replying to {replyFromMessageData && replyFromMessageData.userName}</p>
+                        <p className='text'>{replyFromMessageData && replyFromMessageData.message}</p>
+                    </div>
+                    <input className={`chatInput ${replyFromMessageData && 'noBorderTop'}`} type='text' value={messageInput} placeholder='Type a new message' onChange={(e)=>messageInputHandler(e)}></input>
+                </div>
+                <button className='sendBtn' onClick={sendBtn}>Send</button>
             </div>
         </div>
     );

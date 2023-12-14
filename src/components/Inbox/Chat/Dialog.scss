@@ -56,6 +56,11 @@
                 font-size: $fontSizeSmall;
                 font-weight: $fontWeightNormal;
             }
+
+            &.reply {
+                background-color: $primaryLtGrey;
+                margin-bottom: 8.13px;
+            }
         }
     }
 }

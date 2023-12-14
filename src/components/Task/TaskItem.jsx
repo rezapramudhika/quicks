@@ -3,6 +3,7 @@ import './taskItem.scss';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+// import { badgeData } from '../../helper/dummyData';
 
 const TaskItem = (props) => {
 
@@ -122,6 +123,12 @@ const TaskItem = (props) => {
                                     <p className='descText' onClick={editDescHandler}>{description || 'No description'}</p>
                             }
                         </div>
+                        {/* <div className='badgeContainer'>
+                            <div className={`icon ${!description && 'iconGrey'}`} onClick={editDescHandler}></div>
+                            <div className='selectedBadge'>
+                                <div className='badge'>Important ASAP</div>
+                            </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className='option'>

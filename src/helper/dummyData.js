@@ -153,6 +153,42 @@ export const inboxData = [
     }
 ];
 
+export const badgeData = [
+    {
+        id: 1,
+        name: 'Important ASAP',
+        backgroundColor: '#E5F1FF'
+    },{
+        id: 2,
+        name: 'Offline Meeting',
+        backgroundColor: '#FDCFA4'
+    },{
+        id: 3,
+        name: 'Virtual Meeting',
+        backgroundColor: '#F9E9C3'
+    },{
+        id: 4,
+        name: 'ASAP',
+        backgroundColor: '#AFEBDB'
+    },{
+        id: 5,
+        name: 'Client Related',
+        backgroundColor: '#CBF1C2'
+    },{
+        id: 6,
+        name: 'Self Task',
+        backgroundColor: '#CFCEF9'
+    },{
+        id: 7,
+        name: 'Appointments',
+        backgroundColor: '#F9E0FD'
+    },{
+        id: 8,
+        name: 'Court Related',
+        backgroundColor: '#9DD0ED'
+    }
+]
+
 export const taskData = [
     {
         id: 1,

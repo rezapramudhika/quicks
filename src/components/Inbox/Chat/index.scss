@@ -136,12 +136,71 @@
     display: flex;
     gap: 12px;
 
-    .chatInput {
+
+    .chatInputContainer {
+        position: relative;
         flex-grow: 1;
-        padding: 12px;
-        border: 1px solid grey;
-        border-radius: 5px;
+
+        .reply {
+            z-index: 3;
+            background-color: $primaryLtGrey;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            position: absolute;
+            border: 1px solid $primaryGrey;
+            border-radius: 5px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+
+            .closeReply {
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                width: 12px;
+                height: 12px;
+                background-color: transparent;
+                background-image: url('../../../assets/icon/close_24px.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 12px;
+            }
+
+            .title {
+                font-size: $fontSizeNormal;
+                font-weight: $fontWeightBold;
+                color: $primaryDarkGrey;
+                margin: 0;
+            }
+
+            .text {
+                font-size: $fontSizeNormal;
+                font-weight: $fontWeightNormal;
+                color: $primaryDarkGrey;
+                margin: 0;
+                margin-top: 7px;
+            }
+
+            &.hide {
+                display: none;
+            }
+        }
+
+        .chatInput {
+            width: -webkit-fill-available;
+            padding: 12px;
+            border: 1px solid $primaryGrey;
+            border-radius: 5px;
+
+            &.noBorderTop {
+                border-top: 0px;
+                border-top-right-radius: 0px;
+                border-top-left-radius: 0px;
+            }
+        }
     }
+
 }
 
 .sendBtn {
@@ -153,4 +212,3 @@
     border: 0;
     border-radius: 5px;
 }
-
