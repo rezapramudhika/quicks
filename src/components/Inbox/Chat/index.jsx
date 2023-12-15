@@ -5,14 +5,7 @@ import Notification from './Notification';
 import Loader from '../../Loader'
 import Wrapper from '../../../helper/Wrapper';
 import moment from 'moment';
-const test = {
-    messageId: 2,
-    userId: 2,
-    userName: 'Claren',
-    message: 'Hi, I need help with something can you help me?',
-    createdAt: moment().subtract(5, 'days').format('MMMM DD, YYYY hh:mm'),
-    isRead: true
-};
+
 const Chat = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [unreadMessageId, setUnreadMessageId] = useState();
@@ -49,7 +42,7 @@ const Chat = (props) => {
     }
 
     const sendBtn = () => {
-        if(replyFromMessageData && messageInput.trim()){
+        if (replyFromMessageData && messageInput.trim()) {
             let data = {
                 fromUsername: replyFromMessageData.userName,
                 fromMessage: replyFromMessageData.message,
@@ -74,7 +67,10 @@ const Chat = (props) => {
                 <button className='backBtn' onClick={props.chatDetailHandler}></button>
                 <div className='chatTitleContainer'>
                     <p className='title'>{props.data.title}</p>
-                    <p className='participantNumber'>{props.data.participantNumber} Participants</p>
+                    {
+                        !props.data.isSupport &&
+                        <p className='participantNumber'>{props.data.participantNumber} Participants</p>
+                    }
                 </div>
                 <button className='closeBtn' onClick={props.chatDetailHandler}></button>
             </div>
@@ -125,7 +121,7 @@ const Chat = (props) => {
                         <p className='title'>Replying to {replyFromMessageData && replyFromMessageData.userName}</p>
                         <p className='text'>{replyFromMessageData && replyFromMessageData.message}</p>
                     </div>
-                    <input className={`chatInput ${replyFromMessageData && 'noBorderTop'}`} type='text' value={messageInput} placeholder='Type a new message' onChange={(e)=>messageInputHandler(e)}></input>
+                    <input className={`chatInput ${replyFromMessageData && 'noBorderTop'}`} type='text' value={messageInput} placeholder='Type a new message' onChange={(e) => messageInputHandler(e)}></input>
                 </div>
                 <button className='sendBtn' onClick={sendBtn}>Send</button>
             </div>

@@ -52,4 +52,20 @@
             color: $primaryDarkGrey;
         }
     }
+
+    .notificationError {
+        padding: 12px;
+        background-color: $indicatorRed;
+        border-radius: 5px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .notificationText {
+            font-size: $fontSizeNormal;
+            font-weight: $fontWeightBold;
+            color: #FFFFFF;
+        }
+    }
 }

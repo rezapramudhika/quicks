@@ -11,7 +11,6 @@ const Dialog = (props) => {
         setOptionShow(!optionShow);
     }
     useEffect(() => {
-        console.log(props.data)
         let localStorageData = JSON.parse(localStorage.getItem(`inbox-${props.inboxId}`))
         localStorageData.forEach(element => {
             if (element.userId === props.data.userId) {

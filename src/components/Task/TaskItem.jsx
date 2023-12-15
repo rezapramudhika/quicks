@@ -7,7 +7,7 @@ import moment from 'moment';
 
 const TaskItem = (props) => {
 
-    const [startDate, setStartDate] = useState(moment().toDate());
+    const [startDate, setStartDate] = useState('');
     const [toogleDetail, setToogleDetail] = useState(props.newTask || false);
     const [taskDone, setTaskDone] = useState(false)
     const [optionShow, setOptionShow] = useState(false);
@@ -36,7 +36,7 @@ const TaskItem = (props) => {
     }
 
     useEffect(() => {
-        props.data && setStartDate(moment(props.data.dueDate).toDate());
+        props.data && props.data.dueDate && setStartDate(moment(props.data.dueDate).toDate());
         props.data && setTaskDone(props.data.completed);
         props.data && setDescription(props.data.description);
     }, []);
@@ -56,9 +56,11 @@ const TaskItem = (props) => {
                     </div>
                     <div className={`detailContainer ${toogleDetail && 'show'}`}>
                         <div className='time'>
-                            <div className='icon iconGrey'></div>
+                            <div className={`icon ${!startDate && 'iconGrey'}`}></div>
                             <DatePicker
+                                className='datePicker'
                                 showIcon
+                                placeholderText='Set Date'
                                 selected={startDate}
                                 onChange={(date) => setStartDate(moment(date).toDate())}
                                 icon={
@@ -72,7 +74,7 @@ const TaskItem = (props) => {
                             <div className={`icon ${!description && 'iconGrey'}`} onClick={editDescHandler}></div>
                             {
                                 editDesc ?
-                                    <textarea className='inputDesc' onChange={(e)=>onChangeDescription(e)}></textarea> :
+                                    <textarea className='inputDesc' onChange={(e) => onChangeDescription(e)}></textarea> :
                                     <p className='descText' onClick={editDescHandler}>No description</p>
                             }
                         </div>
@@ -92,20 +94,18 @@ const TaskItem = (props) => {
                 </div>
                 <div className='itemBody'>
                     <div className='titleContainer'>
-                        {
-                            props.newTask ?
-                                <input className='inputTitle' type='text' placeholder='Type Task Title'></input> :
-                                <label className={`title ${taskDone && 'strikethrough'}`}>{props.data.title}</label>
-                        }
-                        <label className={`dueDate ${taskDone && 'hide'} ${props.newTask && 'hide'}`} >{moment(props.data.dueDate).toNow(true)} left</label>
+                        <label className={`title ${taskDone && 'strikethrough'}`}>{props.data.title}</label>
+                        <label className={`dueDate ${taskDone && 'hide'} ${props.newTask && 'hide'}`}>{startDate && moment(startDate).toNow(true) + ' left'} </label>
                         <label className='timestamp'>{moment(props.data.createdAt).format('MM/DD/YYYY')}</label>
                         <button className={`dropdown ${toogleDetail && 'open'}`} onClick={toogleHandler}></button>
                     </div>
                     <div className={`detailContainer ${toogleDetail && 'show'}`}>
                         <div className='time'>
-                            <div className='icon'></div>
+                            <div className={`icon ${!startDate && 'iconGrey'}`}></div>
                             <DatePicker
+                                className='datePicker'
                                 showIcon
+                                placeholderText='Set Date'
                                 selected={startDate}
                                 onChange={(date) => setStartDate(date)}
                                 icon={
@@ -119,7 +119,7 @@ const TaskItem = (props) => {
                             <div className={`icon ${!description && 'iconGrey'}`} onClick={editDescHandler}></div>
                             {
                                 editDesc ?
-                                    <textarea className='inputDesc' defaultValue={description || ''} onChange={(e)=>onChangeDescription(e)}></textarea> :
+                                    <textarea className='inputDesc' defaultValue={description || ''} onChange={(e) => onChangeDescription(e)}></textarea> :
                                     <p className='descText' onClick={editDescHandler}>{description || 'No description'}</p>
                             }
                         </div>

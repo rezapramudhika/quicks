@@ -3,16 +3,35 @@ import './index.scss';
 import TaskItem from './TaskItem';
 import Loader from '../Loader';
 import { taskData } from '../../helper/dummyData';
+import axios from 'axios';
+import Notification from '../Inbox/Chat/Notification';
 
 const Task = (props) => {
     const [selectOpen, setSelectOpen] = useState(false);
     const [newTask, setNewTask] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
     const [data, setData] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
-            setData(taskData)
+            axios.get('https://jsonplaceholder.typicode.com/todos')
+                .then(function (response) {
+                    let responseData = [];
+                    if(response.data) {
+                        response.data.forEach((item, i) => {
+                            if (i < 10){
+                                responseData.push(item)
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+                    setData([...taskData, ...responseData]);
+                })
+                .catch(function (error) {
+                    setIsError(true)
+                })
             setIsLoading(false)
         }, 1000);
     }, []);
@@ -45,12 +64,15 @@ const Task = (props) => {
                 {
                     isLoading ?
                         <Loader loadingText={'Loading Task List ...'} /> :
-                        data.length !== 0 && data.map(item => <TaskItem key={item.id} data={item} />)
+                        data.length !== 0 && data.map(item => <TaskItem key={item.title} data={item} />)
                 }
                 {
                     newTask && <TaskItem newTask />
                 }
             </div>
+            {
+                isError && <Notification type='error' />
+            }
         </div>
     );
 }

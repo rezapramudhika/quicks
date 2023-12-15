@@ -59,6 +59,10 @@
                 color: $primaryDarkGrey;
                 font-size: $fontSizeNormal;
                 font-weight: $fontWeightNormal;
+
+                &.hide {
+                    visibility: hidden;
+                }
             }
 
             .dropdown {
@@ -201,7 +205,7 @@
     }
 }
 
-.react-datepicker__view-calendar-icon input {
+.datePicker {
     padding: 12px !important;
     font-family: 'Lato', sans-serif !important;
     font-size: $fontSizeNormal !important;
@@ -210,6 +214,7 @@
     border: 1px solid $primaryGrey !important;
     border-radius: 5px !important;
     cursor: pointer !important;
+    width: 193px;
 
     &:focus-visible {
         outline: none;
