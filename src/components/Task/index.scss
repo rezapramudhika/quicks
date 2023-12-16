@@ -3,18 +3,17 @@
 .taskContainer {
     display: flex;
     flex-direction: column;
-    height: inherit;
+    padding: 24px 32px 24px 32px;
+    height: -webkit-fill-available;
 }
 
 .taskHeader {
     display: flex;
-    padding: 20px;
-    padding-bottom: 5px;
     justify-content: space-between;
 }
 
 .taskCategory {
-    width: 250px;
+    width: 220px;
 
     .select {
         width: fit-content;
@@ -50,7 +49,7 @@
     .selectOption {
         position: absolute;
         z-index: 2;
-        width: 250px;
+        width: 220px;
         border: 1px solid $primaryGrey;
         border-radius: 5px;
         margin-top: 7px;
@@ -79,8 +78,6 @@
 }
 
 .taskBody {
-    padding: 0px 30px;
-    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     flex: 2;
