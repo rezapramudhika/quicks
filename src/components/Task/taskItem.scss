@@ -23,6 +23,10 @@
             display: flex;
             gap: 10px;
 
+            p {
+                margin: 0;
+            }
+
             .inputTitle {
                 padding: 12px;
                 font-size: $fontSizeNormal;

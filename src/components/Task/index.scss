@@ -12,6 +12,16 @@
     justify-content: space-between;
 }
 
+@media screen and (max-width: 600px) {
+    .taskContainer {
+        padding: 10px;
+    }
+
+    .taskHeader {
+        padding-bottom: 10px;
+    }
+}
+
 .taskCategory {
     width: 220px;
 
@@ -43,6 +53,12 @@
             background-color: transparent;
             border: 0;
             transform: rotate(180deg);
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .select {
+            margin: 0;
         }
     }
 

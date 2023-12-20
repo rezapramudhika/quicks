@@ -1,12 +1,5 @@
 @import '/src/sass/variables';
 
-@media screen and (max-width: 800px) {
-  .popup {
-    width: 90vw !important;
-    height: 70vh !important;
-  }
-}
-
 .popup {
   display: none;
   flex-direction: column;
@@ -21,5 +14,20 @@
 
   &.show {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .popup {
+    width: 90vw;
+    height: 70vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .popup {
+    width: 95vw;
+    height: 80vh;
+    right: 10px;
   }
 }

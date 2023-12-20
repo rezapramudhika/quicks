@@ -3,6 +3,7 @@ import './taskItem.scss';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+import Wrapper from '../../helper/Wrapper';
 // import { badgeData } from '../../helper/dummyData';
 
 const TaskItem = (props) => {
@@ -95,8 +96,18 @@ const TaskItem = (props) => {
                 <div className='itemBody'>
                     <div className='titleContainer'>
                         <label className={`title ${taskDone && 'strikethrough'}`}>{props.data.title}</label>
-                        <label className={`dueDate ${taskDone && 'hide'} ${props.newTask && 'hide'}`}>{startDate && moment(startDate).toNow(true) + ' left'} </label>
-                        <label className='timestamp'>{moment(props.data.createdAt).format('MM/DD/YYYY')}</label>
+                        {
+                            window.innerWidth <= 600 ?
+                                <div>
+                                    <p className='timestamp'>{moment(props.data.createdAt).format('MM/DD/YYYY')}</p>
+                                    <p className={`dueDate ${taskDone && 'hide'} ${props.newTask && 'hide'}`}>{startDate && moment(startDate).toNow(true) + ' left'} </p>
+                                </div> 
+                                :
+                                <Wrapper>
+                                    <label className={`dueDate ${taskDone && 'hide'} ${props.newTask && 'hide'}`}>{startDate && moment(startDate).toNow(true) + ' left'} </label>
+                                    <label className='timestamp'>{moment(props.data.createdAt).format('MM/DD/YYYY')}</label>
+                                </Wrapper>
+                        }
                         <button className={`dropdown ${toogleDetail && 'open'}`} onClick={toogleHandler}></button>
                     </div>
                     <div className={`detailContainer ${toogleDetail && 'show'}`}>

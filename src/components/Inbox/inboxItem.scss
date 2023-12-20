@@ -72,6 +72,12 @@
                 color: $primaryBlue;
             }
 
+            @media screen and (max-width: 600px) {
+                .title {
+                    font-size: $fontSizeNormal;
+                }
+            }
+
             .timestamp {
                 min-width: max-content;
                 margin: 0;
@@ -101,6 +107,15 @@
                 font-size: $fontSizeNormal;
                 color: $primaryDarkGrey;
             }
+
+            @media screen and (max-width: 600px) {
+                .message {
+                    max-width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
         }
     }
 
@@ -108,7 +123,7 @@
         display: flex;
         flex-grow: 1;
         align-items: center;
-        justify-content: end;
+        justify-content: flex-end;
 
         .indicator {
             width: 10px;

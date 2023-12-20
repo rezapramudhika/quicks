@@ -14,26 +14,25 @@ const Task = (props) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        setTimeout(() => {
-            axios.get('https://jsonplaceholder.typicode.com/todos')
-                .then(function (response) {
-                    let responseData = [];
-                    if(response.data) {
-                        response.data.forEach((item, i) => {
-                            if (i < 10){
-                                responseData.push(item)
-                            } else {
-                                return;
-                            }
-                        });
-                    }
-                    setData([...taskData, ...responseData]);
-                })
-                .catch(function (error) {
-                    setIsError(true)
-                })
-            setIsLoading(false)
-        }, 1000);
+        axios.get('https://jsonplaceholder.typicode.com/todos')
+            .then(function (response) {
+                let responseData = [];
+                if (response.data) {
+                    response.data.forEach((item, i) => {
+                        if (i < 10) {
+                            responseData.push(item)
+                        } else {
+                            return;
+                        }
+                    });
+                }
+                setData([...taskData, ...responseData]);
+                setIsLoading(false)
+            })
+            .catch(function (error) {
+                setIsError(true)
+                setIsLoading(false)
+            })
     }, []);
 
     const selectHandler = () => {

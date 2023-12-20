@@ -9,6 +9,12 @@
     height: -webkit-fill-available;
 }
 
+@media screen and (max-width: 600px) {
+    .inboxContainer {
+        padding: 10px;
+    }
+}
+
 .inboxHeader {
     display: flex;
     flex-direction: column;

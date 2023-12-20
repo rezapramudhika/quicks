@@ -1,6 +1,7 @@
 import React from 'react';
 import './inboxItem.scss';
 import { setChatColor } from '../../helper/setChatColor';
+import moment from 'moment';
 
 const InboxItem = (props) => {
     const inboxItemClickHandler = () => {
@@ -18,7 +19,12 @@ const InboxItem = (props) => {
                 <div className='detail'>
                     <div className='firstRow'>
                         <p className='title'>{props.data.title}</p>
-                        <p className='timestamp'>{props.data.date}</p>
+                        {
+                            window.innerWidth <= 600 ? 
+                            <p className='timestamp'>{moment(props.data.date).format('DD/MM/YYYY')} <br/> {moment(props.data.date).format('hh:mm')}</p>
+                            :
+                            <p className='timestamp'>{props.data.date}</p>
+                        }
                     </div>
                     <div className='secondRow'>
                         <p className='senderName'>
@@ -44,7 +50,12 @@ const InboxItem = (props) => {
                 <div className='detail'>
                     <div className='firstRow'>
                         <p className='title'>{props.data.title}</p>
-                        <p className='timestamp'>{props.data.date}</p>
+                        {
+                            window.innerWidth <= 600 ? 
+                            <p className='timestamp'>{moment(props.data.date).format('DD/MM/YYYY')} <br/> {moment(props.data.date).format('hh:mm')}</p>
+                            :
+                            <p className='timestamp'>{props.data.date}</p>
+                        }
                     </div>
                     <div className='secondRow'>
                         <p className='senderName'>{props.data.message[props.data.message.length - 1].data[props.data.message[props.data.message.length - 1].data.length - 1].userName} :</p>
